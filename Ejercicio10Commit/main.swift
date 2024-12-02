@@ -14,4 +14,12 @@ class GestorDeReservas {
     init(salas: [SalaDeReunion]) {
         self.salas = salas
     }
-
+    // Mostrar todas las salas disponibles
+    func mostrarSalas() {
+        print("\n--- Salas Disponibles ---")
+        for sala in salas {
+            let estado = sala.fechaReserva == nil ? "Disponible" : "Reservada para \(convertirFechaAString(fecha: sala.fechaReserva!))"
+            print("\(sala.nombre) - Capacidad: \(sala.capacidad) personas - \(estado)")
+        }
+        print("-------------------------")
+    }
