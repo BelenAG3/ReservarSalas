@@ -39,4 +39,18 @@ class GestorDeReservas {
             return false
         }
     }
-
+    // Mostrar reservas existentes
+    func mostrarReservas() {
+        print("\n--- Reservas Actuales ---")
+        var hayReservas = false
+        for sala in salas {
+            if let fecha = sala.fechaReserva {
+                print("\(sala.nombre) - Capacidad: \(sala.capacidad) personas - Fecha de reserva: \(convertirFechaAString(fecha: fecha))")
+                hayReservas = true
+            }
+        }
+        if !hayReservas {
+            print("No hay reservas actuales.")
+        }
+        print("-------------------------")
+    }
