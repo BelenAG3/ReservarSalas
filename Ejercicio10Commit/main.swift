@@ -34,4 +34,9 @@ class GestorDeReservas {
                 print("La sala \(nombreSala) ya está reservada.")
                 return false
             }
+        } else {
+            print("No existe una sala con ese nombre.")
+            return false
+        }
+    }
 
