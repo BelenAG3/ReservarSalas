@@ -62,3 +62,54 @@ class GestorDeReservas {
         return dateFormatter.string(from: fecha)
     }
 }
+func gestionarReservas() {
+    // Crear salas iniciales
+    let salasDeReunion = [
+        SalaDeReunion(nombre: "Sala A", capacidad: 10, fechaReserva: nil),
+        SalaDeReunion(nombre: "Sala B", capacidad: 20, fechaReserva: nil),
+        SalaDeReunion(nombre: "Sala C", capacidad: 5, fechaReserva: nil)
+    ]
+    
+    let gestor = GestorDeReservas(salas: salasDeReunion)
+    var continuar = true
+    
+    while continuar {
+        // Mostrar el menú principal
+        print("\n¿Qué deseas hacer?")
+        print("1. Ver salas disponibles")
+        print("2. Realizar una reserva")
+        print("3. Ver reservas")
+        print("4. Salir")
+        
+        // Leer la opción seleccionada
+        if let opcion = readLine(), let opcionInt = Int(opcion) {
+            switch opcionInt {
+            case 1:
+                gestor.mostrarSalas() // Ver salas disponibles
+            case 2:
+                print("Ingresa el nombre de la sala que deseas reservar:")
+                if let nombreSala = readLine() {
+                    print("Ingresa la fecha de la reserva (formato: dd/MM/yyyy HH:mm):")
+                    if let fechaString = readLine() {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+                        if let fecha = dateFormatter.date(from: fechaString) {
+                            _ = gestor.reservarSala(nombreSala: nombreSala, fecha: fecha)
+                        } else {
+                            print("Formato de fecha no válido.")
+                        }
+                    }
+                }
+            case 3:
+                gestor.mostrarReservas() // Ver reservas
+            case 4:
+                continuar = false
+                print("¡Gracias por usar la aplicación!")
+            default:
+                print("Opción no válida. Por favor, selecciona un número entre 1 y 4.")
+            }
+        } else {
+            print("Entrada no válida. Por favor, selecciona un número entre 1 y 4.")
+        }
+    }
+}
