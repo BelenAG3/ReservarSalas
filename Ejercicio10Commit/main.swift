@@ -54,3 +54,11 @@ class GestorDeReservas {
         }
         print("-------------------------")
     }
+    // Función para convertir una fecha a formato legible
+    private func convertirFechaAString(fecha: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: fecha)
+    }
+}
