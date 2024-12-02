@@ -6,3 +6,12 @@ struct SalaDeReunion {
     var capacidad: Int
     var fechaReserva: Date?  // Si no tiene fecha, está disponible
 }
+
+// Clase para gestionar las reservas de salas
+class GestorDeReservas {
+    var salas: [SalaDeReunion]
+    
+    init(salas: [SalaDeReunion]) {
+        self.salas = salas
+    }
+
