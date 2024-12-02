@@ -23,3 +23,15 @@ class GestorDeReservas {
         }
         print("-------------------------")
     }
+    // Realizar una reserva
+    func reservarSala(nombreSala: String, fecha: Date) -> Bool {
+        if let index = salas.firstIndex(where: { $0.nombre == nombreSala }) {
+            if salas[index].fechaReserva == nil { // La sala está disponible
+                salas[index].fechaReserva = fecha
+                print("Reserva realizada con éxito para \(salas[index].nombre) el \(convertirFechaAString(fecha: fecha)).")
+                return true
+            } else {
+                print("La sala \(nombreSala) ya está reservada.")
+                return false
+            }
+
