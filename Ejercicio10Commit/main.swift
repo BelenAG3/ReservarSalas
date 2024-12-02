@@ -1,11 +1,8 @@
-//
-//  main.swift
-//  Ejercicio10Commit
-//
-//  Created by user257491 on 12/2/24.
-//
-
 import Foundation
 
-print("Hello, World!")
-
+// Estructura que representa una Sala de Reunión
+struct SalaDeReunion {
+    var nombre: String
+    var capacidad: Int
+    var fechaReserva: Date?  // Si no tiene fecha, está disponible
+}
